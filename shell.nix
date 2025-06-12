@@ -10,5 +10,6 @@ in
       colmena
       just
       nixos-anywhere
+      openssl
     ];
   }
