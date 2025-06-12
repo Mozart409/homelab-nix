@@ -27,7 +27,10 @@
 
     colmenaHive = colmena.lib.makeHive {
       meta = {
-        nixpkgs = nixpkgs.legacyPackages.x86_64-linux;
+        nixpkgs = import nixpkgs {
+          system = "x86_64-linux";
+          overlays = [];
+        };
       };
       default = {pkgs, ...}: {
         environment.systemPackages = [
@@ -39,7 +42,7 @@
           targetHost = "pinchflat";
           targetPort = 22;
           targetUser = "amadeus";
-          buildOnTarget = true;
+          buildOnTarget = false;
           tags = ["homelab" "media"];
         };
         nixpkgs.system = "x86_64-linux";
