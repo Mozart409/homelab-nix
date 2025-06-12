@@ -59,6 +59,8 @@
     curl
     btop
     busybox
+    openssl
+    pwgen
   ];
 
   networking.firewall = {

@@ -31,11 +31,11 @@
 
   boot.loader.systemd-boot.enable = true;
 
-  /*
-     fileSystems."/" = {
-    device = "/dev/vda";
-    # fsType = "ext4";
-    fsType = "btrfs";
+  services.pinchflat = {
+    enable = true;
+    port = 8945;
+    mediaDir = "/root/youtube";
+    secretsFile = "/root/pinchflat.secret";
+    openFirewall = true;
   };
-  */
 }
