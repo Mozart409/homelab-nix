@@ -37,7 +37,12 @@
           pkgs.curl
         ];
       };
-      pinchflat = {pkgs, ...}: {
+      pinchflat = {
+        pkgs,
+        name,
+        nodes,
+        ...
+      }: {
         deployment = {
           targetHost = "pinchflat";
           targetPort = 22;
@@ -46,10 +51,13 @@
           tags = ["homelab" "media"];
         };
         nixpkgs.system = "x86_64-linux";
-        imports = [
+        networking.hostName = name;
+        /*
+           imports = [
           disko.nixosModules.disko
           ./systems/pinchflat/configuration.nix
         ];
+        */
         time.timeZone = "Europe/Berlin";
       };
     };
