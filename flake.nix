@@ -44,7 +44,8 @@
         ...
       }: {
         deployment = {
-          targetHost = "pinchflat";
+          # targetHost = "pinchflat";
+          targetHost = "192.168.2.108";
           targetPort = 22;
           targetUser = "amadeus";
           buildOnTarget = false;
