@@ -8,6 +8,8 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # For the devShell
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs = {
@@ -15,6 +17,7 @@
     nixpkgs,
     disko,
     colmena,
+    flake-utils,
     ...
   }: {
     nixosConfigurations.pinchflat = nixpkgs.lib.nixosSystem {
@@ -53,12 +56,18 @@
         };
         nixpkgs.system = "x86_64-linux";
         networking.hostName = name;
-        /*
-           imports = [
+
+        boot.loader.grub.device = "/dev/sda";
+        fileSystems."/" = {
+          device = "/dev/sda1";
+          fsType = "ext4";
+        };
+
+        imports = [
           disko.nixosModules.disko
           ./systems/pinchflat/configuration.nix
         ];
-        */
+
         time.timeZone = "Europe/Berlin";
       };
     };

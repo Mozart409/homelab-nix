@@ -11,3 +11,9 @@ check: clear
 
 pinchflat: clear
     nix run nixpkgs#nixos-anywhere -- --flake .#pinchflat root@192.168.2.108
+
+build: clear
+    colmena build 
+
+apply: clear
+    colmena apply 
