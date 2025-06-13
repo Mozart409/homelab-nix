@@ -79,4 +79,29 @@
       fi
     '';
   };
+
+  services.syncthing = {
+    enable = true;
+    guiAddress = "0.0.0.0:8384";
+    openDefaultPorts = true;
+    systemService = true;
+    overrideDevices = false;
+    overrideFolders = false;
+    settings = {
+      devices = {
+        homelab = {
+          addresses = [
+            "tcp://192.168.2.100:51820"
+          ];
+          id = "NI3IJJ7-7IKX7LC-V2WGUVJ-4UIDOPB-CYR3JK7-BMOSCHC-EH3UMWD-ADC63QC";
+        };
+      };
+      gui = {
+        theme = "black";
+      };
+      options = {
+        localAnnounceEnabled = true;
+      };
+    };
+  };
 }
