@@ -1,6 +1,6 @@
 # homelab-nix
 
-This repository contains the NixOS configuration for my homelab, managed with [Colmena](https://colmena.cli.rs/) and [Disko](https://github.com/nix-community/disko).
+This repository contains the NixOS configuration for my homelab, managed with [Disko](https://github.com/nix-community/disko).
 
 ## Overview
 
@@ -20,31 +20,12 @@ The homelab setup is declared using Nix Flakes, ensuring reproducible and declar
 ### pinchflat
 
 - **System**: `x86_64-linux`
-- **Deployment**: Managed by Colmena, targeting host `pinchflat` on port `22` as user `amadeus`.
 - **Features**:
     - Disk configuration managed by Disko.
     - Tagged as `homelab` and `media`.
     - Timezone: `Europe/Berlin`.
 
 ## Deployment
-
-The Colmena hive (`colmenaHive`) is defined in `flake.nix` and includes deployment configurations for the machines.
-
-To deploy to a machine (e.g., `pinchflat`):
-
-```bash
-colmena apply -on pinchflat
-```
-
-## Development
-
-A development shell can be entered using:
-
-```bash
-nix develop
-```
-
-This will provide an environment with the packages defined in `shell.nix`.
 
 ## Contributing
 
