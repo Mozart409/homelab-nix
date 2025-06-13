@@ -9,5 +9,8 @@ clear:
 check: clear
     nix flake check
 
-pinchflat: clear
+bootstrap-pinchflat: clear
     nix run nixpkgs#nixos-anywhere -- --flake .#pinchflat root@192.168.2.108
+
+pinchflat: clear
+    nixos-rebuild switch --flake .#pinchflat --target-host root@192.168.2.108
