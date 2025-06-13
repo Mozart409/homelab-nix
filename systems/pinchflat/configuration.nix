@@ -43,6 +43,10 @@
   };
   users.groups.pinchflat = {};
 
+  users.users.syncthing = {
+    extraGroups = ["pinchflat"];
+  };
+
   services.pinchflat = {
     enable = true;
     port = 8945;
