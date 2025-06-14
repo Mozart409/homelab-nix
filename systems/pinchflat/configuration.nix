@@ -116,4 +116,9 @@
       encode zstd gzip
     '';
   };
+
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [22 80 443 8945 8384 2222];
+  };
 }
