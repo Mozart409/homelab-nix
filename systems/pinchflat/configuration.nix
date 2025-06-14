@@ -56,7 +56,7 @@
   };
 
   systemd.tmpfiles.rules = [
-    "d       /var/lib/pinchflat/media 0750 pinchflat pinchflat -   -"
+    "d       /var/lib/pinchflat/youtube 0770 pinchflat pinchflat -   -"
   ];
 
   # Activation script to create the pinchflat secret
