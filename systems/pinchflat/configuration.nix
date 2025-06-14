@@ -108,4 +108,12 @@
       };
     };
   };
+
+  services.caddy = {
+    enable = true;
+    virtualHosts.":2222".extraConfig = ''
+      reverse_proxy http://localhost:8384
+      encode zstd gzip
+    '';
+  };
 }
