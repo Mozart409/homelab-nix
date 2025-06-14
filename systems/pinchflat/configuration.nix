@@ -114,7 +114,7 @@
           id = "xncoh-t3m2q";
           path = "/srv/pinchflat/youtube";
           devices = ["homelab"];
-          type = "send";
+          type = "sendonly";
         };
       };
     };
