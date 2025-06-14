@@ -51,13 +51,15 @@
   services.pinchflat = {
     enable = true;
     port = 8945;
-    mediaDir = "/var/lib/pinchflat/youtube";
+    # mediaDir = "/var/lib/pinchflat/youtube";
+    mediaDir = "/srv/pinchflat/youtube";
     secretsFile = "/root/pinchflat.secret";
     openFirewall = true;
   };
 
   systemd.tmpfiles.rules = [
-    "d       /var/lib/pinchflat/youtube 0770 pinchflat pinchflat -   -"
+    "d /srv/pinchflat 0750 pinchflat pinchflat - -"
+    "d /srv/pinchflat/youtube 0770 pinchflat pinchflat - -"
   ];
 
   # Activation script to create the pinchflat secret
@@ -106,6 +108,14 @@
       };
       options = {
         localAnnounceEnabled = true;
+      };
+      folders = {
+        "Youtube" = {
+          id = "xncoh-t3m2q";
+          path = "/srv/pinchflat/youtube";
+          devices = ["homelab"];
+          type = "send";
+        };
       };
     };
   };
