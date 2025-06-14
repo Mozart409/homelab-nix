@@ -105,6 +105,8 @@
       };
       gui = {
         theme = "black";
+        user = "root";
+        password = "syncthing";
       };
       options = {
         localAnnounceEnabled = true;
