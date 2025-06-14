@@ -40,6 +40,7 @@
     group = "pinchflat";
     home = "/var/lib/pinchflat";
     createHome = true;
+    homeMode = "0750";
   };
   users.groups.pinchflat = {};
 
