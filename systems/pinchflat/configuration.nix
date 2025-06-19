@@ -58,9 +58,33 @@
   };
 
   systemd.tmpfiles.rules = [
-    "d /srv/pinchflat 0750 pinchflat pinchflat - -"
-    "d /srv/pinchflat/youtube 0770 pinchflat pinchflat - -"
+    "d /srv 0755 root root - -"
+    "d /srv/pinchflat 0755 pinchflat pinchflat - -"
+    "d /srv/pinchflat/youtube 0775 pinchflat pinchflat - -"
   ];
+
+  systemd.services.pinchflat = {
+    after = ["systemd-tmpfiles-setup.service"];
+    wants = ["systemd-tmpfiles-setup.service"];
+  };
+
+  # activation script to ensure dir permissions
+  system.activationScripts.ensurePinchflatDirectories = {
+    deps = ["users" "groups"];
+    text = ''
+      # Ensure /srv exists and is writable
+      mkdir -p /srv
+      chmod 755 /srv
+
+      # Create pinchflat directories with correct ownership
+      mkdir -p /srv/pinchflat/youtube
+      chown -R pinchflat:pinchflat /srv/pinchflat
+      chmod 755 /srv/pinchflat
+      chmod 775 /srv/pinchflat/youtube
+
+      echo "Pinchflat directories created and permissions set."
+    '';
+  };
 
   # Activation script to create the pinchflat secret
   system.activationScripts.ensurePinchflatSecret = {
